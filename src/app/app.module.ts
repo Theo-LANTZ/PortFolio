@@ -20,7 +20,7 @@ import { MatButtonModule} from '@angular/material/button';
     NavigationComponent,
     CompetenceComponent,
     HomeComponent,
-    ProjetsComponent
+    ProjetsComponent,
   ],
   imports: [
     BrowserModule,

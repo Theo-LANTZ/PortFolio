@@ -1,0 +1,15 @@
+.navigation{
+    text-align: center;
+    padding: 20px;
+    background-color: red;
+}
+.navigation span{
+    font-size: 24px;
+    margin-right: 20%;
+    transition: 1s ease;
+}
+
+.navigation span:hover{
+    letter-spacing: 4px;
+    cursor: pointer;
+}
