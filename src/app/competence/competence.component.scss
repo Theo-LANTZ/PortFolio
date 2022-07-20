@@ -1,10 +1,11 @@
-h1,h2,h3{
+h1,h2{
     text-align: center;
 }
-span, mat-progress-bar{
+span, mat-progress-bar, h3{
     margin-left: 40px;
 }
 mat-progress-bar{
+    max-width: 600px;
     height: 20px;
     border-radius: 3px;
     margin-bottom: 15px;
