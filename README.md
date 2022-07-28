@@ -1,3 +1,3 @@
 # Portfolio
 
-(https://theo-lantz.github.io/portfolio)
+(https://theo-lantz.github.io/PortFolio/)
