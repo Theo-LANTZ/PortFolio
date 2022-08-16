@@ -120,6 +120,8 @@ ul li {
 ul li a {
   text-decoration: none;
 }
+@media  screen and (min-width:720px) {
+  
 ul li a .fab {
   font-size: 3em;
   color: #222;
@@ -156,4 +158,31 @@ ul li:nth-child(3) a::before {
 }
 ul li:hover a::before {
   height: 100%;
+}
+}
+@media screen and (max-width:720px){
+  .showcase img{
+    visibility: hidden;
+  }
+  
+  ul li a .fab {
+    font-size: 3em;
+  }
+
+  ul li:nth-child(1){
+    content: "\f16d";
+  background-image: linear-gradient(45deg, 
+    #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,
+    #bc1888 100%);
+  -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+  }
+  ul li:nth-child(2) a{
+    content: "\f232";
+    color: #25D366;
+  }
+  ul li:nth-child(3) a{
+    content: "\f099";
+    color: #1DA1F2;
+  }
 }

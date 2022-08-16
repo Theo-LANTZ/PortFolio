@@ -1,28 +1,164 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700);
+// Ciel étoilé
+
+$starFieldWidth: 2560;
+$starFieldHeight: 2560;
+$starStartOffset: 2560px;
+
+$starOneScrollDuration: 100s;
+$starTwoScrollDuration: 125s;
+$starThreeScrollDuration: 175s;
+$numStarOneStars: 1700;
+$numStarTwoStars: 700;
+$numStarThreeStars: 200;
+$numComet: 10;
+
+html {
+  height: 100%;
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+}
+
+.main-container {
+    display: block;
+    position: relative;
+    width: 1200px;
+    height: 600px;
+    background: linear-gradient(to bottom, #0c0b13 0%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @function create-stars($n) {
+    $stars: "#{random($starFieldWidth)}px #{random($starFieldHeight)}px #FFF";
+  
+    @for $i from 2 through $n {
+      $stars: "#{$stars} , #{random($starFieldWidth)}px #{random($starFieldHeight)}px #FFF";
+    }
+    @return unquote($stars);
+  }
+
+  @keyframes animStar {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-#{$starFieldHeight}px)
+        translateX(-#{$starFieldWidth}px);
+    }
+  }
+  
+  @keyframes animShootingStar {
+    from {
+      transform: translateY(0px) translateX(0px) rotate(-45deg);
+      opacity: 1;
+      height: 5px;
+    }
+    to {
+      transform: translateY(-#{$starFieldHeight}px)
+        translateX(-#{$starFieldWidth}px) rotate(-45deg);
+      opacity: 1;
+      height: 800px;
+    }
+  }
+
+  @mixin star-template($numStars, $starSize, $scrollSpeed) {
+    z-index: 10;
+    width: $starSize;
+    height: $starSize;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: create-stars($numStars);
+    animation: animStar $scrollSpeed linear infinite;
+    &:after {
+      content: " ";
+      top: -$starStartOffset;
+      width: $starSize;
+      height: $starSize;
+      border-radius: 50%;
+      position: absolute;
+      background: transparent;
+      box-shadow: create-stars($numStars);
+    }
+  }
+  
+  @mixin shooting-star-template($numStars, $starSize, $speed) {
+    z-index: 10;
+    width: $starSize;
+    height: $starSize + 80px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 1)
+    );
+    animation: animShootingStar $speed linear infinite;
+  }
+
+  .stars {
+    @include star-template($numStarOneStars, 1px, $starOneScrollDuration);
+  }
+  .stars2 {
+    @include star-template($numStarTwoStars, 2px, $starTwoScrollDuration);
+  }
+  .stars3 {
+    @include star-template($numStarThreeStars, 3px, $starThreeScrollDuration);
+  }
+  .comet {
+    @include shooting-star-template($numComet, 5px, 10s);
+  }
+//-----------------------------------
+@import url(http://fonts.googleapis.com/css?family=Montserrat:300italic,400italic,700italic,300,400,700);
 @import '~@fortawesome/fontawesome-free/css/all.css';
 *{
-    font-family: 'Open Sans', sans-serif;
-}
-.fab, .fas{
-    font-size: 2em;
+    font-family: 'Montserrat', sans-serif;
 }
 img{
     width: 300px;
     height: auto;
 }
-mat-progress-bar{
-    border-radius: 37px;
-    width: 300px;
-    height: 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+
+H1{
+    font-size: 40px;
+}
+.fab, .fas{
+    font-size: 6em;
 }
 
-i{
-    letter-spacing: 2px;
+.purple{
+    color:#CC59D2;
 }
 
-h1{
+.tech-icons{
     text-align: center;
+    border: 1px solid #CC59D2;
+    width: 130px;
+    height: 90px;
+    padding: 10px;
+    display: inline-block;
+    margin: 15px;
+    border-radius: 6px;
+    box-shadow: 8px 5px 5px #5a189a;
+    transition:width 0.3s ease, height 0.3s ease;
+}
+.tech-icons:hover{
+    width: 140px;
+    height: 100px;
+}
+
+.fa-arrow-right-from-bracket{
+    transform: rotate(180deg);
+    cursor: pointer;
     font-size: 3em;
+    margin: 10px
+}
+
+img{
+    cursor: pointer;
 }
